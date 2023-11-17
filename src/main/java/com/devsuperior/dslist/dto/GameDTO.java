@@ -27,6 +27,7 @@ public class GameDTO {
 
     }
 
+    //O BeanUtils serve para entidades grandes
     public GameDTO (Game entity){
         BeanUtils.copyProperties(entity, this);
     }

@@ -15,43 +15,48 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-
+    private Double score;
     @Column(name = "game_year")
     private Integer year;
     private String genre;
     private String platforms;
-    private Double score;
+   
     private String imgUrl;
-    private String shortDescrition;
+
+    @Column(columnDefinition = "TEXT")
+    private String shortDescription;
+
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game(){
 
     }
 
+    
 
-    public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
-            String shortDescrition, String longDescription) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-        this.platforms = platforms;
-        this.score = score;
-        this.imgUrl = imgUrl;
-        this.shortDescrition = shortDescrition;
-        this.longDescription = longDescription;
-    }
-
-
-    /**
+/**
      * @return Long return the id
      */
     public Long getId() {
         return id;
     }
 
-    /**
+   public Game(Long id, String title, Double score, Integer year, String genre, String platforms, String imgUrl,
+        String shortDescrition, String longDescription) {
+    this.id = id;
+    this.title = title;
+    this.score = score;
+    this.year = year;
+    this.genre = genre;
+    this.platforms = platforms;
+    this.imgUrl = imgUrl;
+    this.shortDescription = shortDescrition;
+    this.longDescription = longDescription;
+}
+
+
+ /**
      * @param id the id to set
      */
     public void setId(Long id) {
@@ -70,6 +75,20 @@ public class Game {
      */
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    /**
+     * @return Double return the score
+     */
+    public Double getScore() {
+        return score;
+    }
+
+    /**
+     * @param score the score to set
+     */
+    public void setScore(Double score) {
+        this.score = score;
     }
 
     /**
@@ -115,20 +134,6 @@ public class Game {
     }
 
     /**
-     * @return Double return the score
-     */
-    public Double getScore() {
-        return score;
-    }
-
-    /**
-     * @param score the score to set
-     */
-    public void setScore(Double score) {
-        this.score = score;
-    }
-
-    /**
      * @return String return the imgUrl
      */
     public String getImgUrl() {
@@ -145,15 +150,15 @@ public class Game {
     /**
      * @return String return the shortDescrition
      */
-    public String getShortDescrition() {
-        return shortDescrition;
+    public String getShortDescription() {
+        return shortDescription;
     }
 
     /**
      * @param shortDescrition the shortDescrition to set
      */
-    public void setShortDescrition(String shortDescrition) {
-        this.shortDescrition = shortDescrition;
+    public void setShortDescription(String shortDescrition) {
+        this.shortDescription = shortDescrition;
     }
 
     /**
@@ -169,7 +174,7 @@ public class Game {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
-
+    
 
     @Override
     public int hashCode() {
@@ -185,7 +190,11 @@ public class Game {
             return false;
         if (getClass() != obj.getClass())
             return false;
+            
         Game other = (Game) obj;
         return Objects.equals(id, other.id);
     }
+
+    
+
 }
